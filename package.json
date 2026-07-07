@@ -1,0 +1,11 @@
+{
+  "name": "jaypee-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "serve -l 3000"
+  },
+  "devDependencies": {
+    "serve": "latest"
+  }
+}

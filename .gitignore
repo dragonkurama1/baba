@@ -1,0 +1,6 @@
+.vercel
+node_modules
+__pycache__
+*.pyc
+.gen_placeholders.py
+.gen_seed_sql.py

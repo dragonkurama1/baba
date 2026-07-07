@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <title>JAYPEE — Réparation images</title>
+  <style>
+    body{font-family:Arial,sans-serif;max-width:860px;margin:40px auto;padding:0 24px;background:#f5f5f5}
+    h1{color:#cc1111;margin-bottom:8px}
+    .card{background:#fff;border:1px solid #ddd;padding:16px;margin:10px 0;border-radius:6px}
+    .ok{color:#2d7a4f;font-weight:bold}.bad{color:#cc1111;font-weight:bold}
+    .warn{background:#fff8e1;border-color:#ffc107;padding:14px;border-radius:6px;margin:12px 0}
+    button{background:#cc1111;color:#fff;border:none;padding:13px 28px;cursor:pointer;font-size:15px;border-radius:5px;margin:6px 4px;font-weight:bold}
+    button.fix{background:#2d7a4f;font-size:16px;padding:16px 32px}
+    .img-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .img-thumb{width:90px;height:90px;object-fit:cover;border:2px solid #ddd;border-radius:4px}
+    .img-bad{width:90px;height:90px;background:#fee;border:2px solid #cc1111;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#cc1111;text-align:center}
+    .prod{font-weight:bold;margin-bottom:4px}
+    .col-name{font-size:12px;color:#888;margin-bottom:6px}
+    .path{font-family:monospace;font-size:11px;color:#aaa;word-break:break-all}
+    #log{background:#111;color:#0f0;padding:14px;border-radius:6px;font-family:monospace;font-size:12px;white-space:pre;max-height:180px;overflow:auto;margin-top:10px}
+  </style>
+</head>
+<body>
+<h1>🔧 JAYPEE — Réparation des images</h1>
+
+<div id="app">Analyse en cours...</div>
+
+<script src="app.js"></script>
+<script>
+// Image files present on disk (mapped from the images/ folder)
+const DISK_IMAGES = {
+  // Product id → color index → array of image paths
+  0: { // Luxura Klass
+    0: ['images/luxura-klass-blanc-casse-mogcduue-0.jpg','images/luxura-klass-blanc-casse-mogcdx52-1.jpg','images/luxura-klass-blanc-casse-mogcdywu-2.jpg'], // Blanc Cassé
+    1: ['images/luxura-klass-noir-mogce0if-0.jpg','images/luxura-klass-noir-mogce2ka-1.jpg'], // Noir
+    2: [] // Camel — pas encore d'image
+  },
+  1: { // Luxura
+    0: ['images/luxura-ecru-mogcikjl-0.jpg','images/luxura-ecru-mogcin6v-1.jpg'], // Écru
+    1: ['images/luxura-noir-mogcit52-0.jpg','images/luxura-noir-mogciv78-1.jpg'], // Noir
+    2: ['images/luxura-camel-mogciyx4-0.jpg','images/luxura-camel-mogcj35y-1.jpg'] // Camel
+  },
+  2: { // Gourmet
+    0: ['images/gourmet-beige-mogckxjc-0.jpg','images/gourmet-beige-mogckzis-1.jpg','images/gourmet-beige-mogcl265-2.jpg'], // Beige
+    1: ['images/gourmet-taupe-mogcl6t7-0.jpg','images/gourmet-taupe-mogcl9ma-1.jpg'], // Taupe
+    2: [] // Vert de gris — pas encore d'image
+  }
+};
+
+function getProducts(){
+  const raw = localStorage.getItem('jaypee_products_v3');
+  if(raw){
+    try{ return JSON.parse(raw); }catch(e){}
+  }
+  // Use defaults from app.js
+  return JSON.parse(JSON.stringify(DEFAULT_PRODUCTS)).map(p=>{
+    p.colors = (p.colors||[]).map(c=>({...c, images:[], photo:null}));
+    return p;
+  });
+}
+
+function applyDiskImages(products){
+  let count = 0;
+  Object.entries(DISK_IMAGES).forEach(([pid, colorMap])=>{
+    const p = products.find(x=>x.id===parseInt(pid));
+    if(!p) return;
+    Object.entries(colorMap).forEach(([cidx, imgs])=>{
+      if(!imgs.length) return;
+      const c = p.colors[parseInt(cidx)];
+      if(!c) return;
+      c.images = imgs;
+      c.photo = imgs[0];
+      count += imgs.length;
+    });
+  });
+  return count;
+}
+
+function render(){
+  const app = document.getElementById('app');
+  const products = getProducts();
+  const hasLS = !!localStorage.getItem('jaypee_products_v3');
+
+  // Count images currently assigned
+  let totalImgs = 0;
+  products.forEach(p=>(p.colors||[]).forEach(c=>{ totalImgs += (c.images||[]).length; }));
+
+  let html = '';
+
+  if(!hasLS){
+    html += `<div class="warn">
+      <span class="bad">⚠ Aucune donnée dans le localStorage.</span><br>
+      Les produits par défaut vont être initialisés et vos images du dossier <code>images/</code> seront associées automatiquement.
+    </div>`;
+  }
+
+  html += `<div class="card">
+    <div class="prod">État actuel : ${products.length} produits · ${totalImgs} image(s) associée(s)</div>
+    <button class="fix" onclick="doFix()">✓ Initialiser et associer toutes les images</button>
+    <button onclick="location.href='index.html'" style="background:#555">← Retour à l'accueil</button>
+  </div>`;
+
+  // Preview what will be fixed
+  html += '<h3>Images qui seront associées :</h3>';
+  Object.entries(DISK_IMAGES).forEach(([pid, colorMap])=>{
+    const p = products.find(x=>x.id===parseInt(pid));
+    if(!p) return;
+    Object.entries(colorMap).forEach(([cidx, imgs])=>{
+      if(!imgs.length) return;
+      const c = p.colors[parseInt(cidx)];
+      if(!c) return;
+      html += `<div class="card">
+        <div class="prod">${p.name} — <span style="color:#e8721e">${c.name}</span></div>
+        <div class="img-row">
+          ${imgs.map(src=>`
+            <div>
+              <img class="img-thumb" src="${src}" onerror="this.outerHTML='<div class=img-bad>Fichier<br>absent</div>'" />
+              <div class="path">${src.split('/').pop()}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+    });
+  });
+
+  app.innerHTML = html;
+}
+
+function doFix(){
+  const log = [];
+  let products = getProducts();
+  log.push('Chargement des produits...');
+
+  // Fix images/images/ paths if any
+  products = JSON.parse(JSON.stringify(products).replace(/images\/images\//g,'images/'));
+  log.push('Correction des chemins images/images/ → images/');
+
+  // Apply disk images
+  const count = applyDiskImages(products);
+  log.push(`Association de ${count} image(s) aux produits...`);
+
+  // Save
+  localStorage.setItem('jaypee_products_v3', JSON.stringify(products));
+  log.push('✓ Sauvegarde dans le localStorage terminée.');
+  log.push('');
+  log.push('Résumé par produit :');
+  products.filter(p=>Object.keys(DISK_IMAGES).includes(String(p.id))).forEach(p=>{
+    (p.colors||[]).forEach(c=>{
+      if((c.images||[]).length)
+        log.push(`  • ${p.name} / ${c.name} : ${c.images.length} image(s)`);
+    });
+  });
+
+  const app = document.getElementById('app');
+  app.innerHTML = `
+    <div class="card" style="border-color:#2d7a4f">
+      <div class="ok">✓ Réparation terminée avec succès !</div>
+      <div id="log">${log.join('\n')}</div>
+      <br>
+      <button class="fix" onclick="location.href='index.html'">→ Aller sur le site</button>
+      <button onclick="location.href='produits.html'" style="background:#555">→ Voir les produits</button>
+    </div>`;
+}
+
+render();
+</script>
+</body>
+</html>

@@ -326,19 +326,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 /* ═══════ FOOTER ═══════ */
 .footer{background:var(--black);padding:72px 0 0}
 .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.06)}
-.foot-desc{font-size:13px;font-weight:300;color:rgba(255,255,255,.32);line-height:1.72;max-width:290px;margin:22px 0 26px}
-.foot-col-ttl{font-family:var(--caps);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.50);margin-bottom:22px}
+.foot-desc{font-size:13px;font-weight:700;color:rgba(255,255,255,.62);line-height:1.72;max-width:290px;margin:22px 0 26px}
+.foot-col-ttl{font-family:var(--caps);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.68);margin-bottom:22px}
 .foot-col ul{display:flex;flex-direction:column;gap:11px}
-.foot-col ul a{font-size:13px;font-weight:300;color:rgba(255,255,255,.32);transition:color var(--tr)}
+.foot-col ul a{font-size:13px;font-weight:700;color:rgba(255,255,255,.62);transition:color var(--tr)}
 .foot-col ul a:hover{color:var(--orange)}
 .foot-soc{display:flex;gap:12px;margin-top:4px}
-.foot-soc-a{font-family:var(--caps);font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.24);transition:color var(--tr)}
+.foot-soc-a{font-family:var(--caps);font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.55);transition:color var(--tr)}
 .foot-soc-a:hover{color:var(--orange)}
 .foot-btm{display:flex;align-items:center;justify-content:space-between;padding:22px 0;gap:16px;flex-wrap:wrap}
-.foot-copy{font-family:var(--caps);font-size:10px;font-weight:400;letter-spacing:.12em;color:rgba(255,255,255,.18)}
+.foot-copy{font-family:var(--caps);font-size:10px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.5)}
 .foot-copy span{color:var(--orange)}
 .foot-nav{display:flex;gap:24px}
-.foot-nav a{font-family:var(--caps);font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.18);transition:color var(--tr)}
+.foot-nav a{font-family:var(--caps);font-size:10px;font-weight:700;letter-spacing:.12em;color:rgba(255,255,255,.5);transition:color var(--tr)}
 .foot-nav a:hover{color:var(--orange)}
 
 /* ═══════════════════════════════════════════

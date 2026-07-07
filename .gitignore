@@ -4,3 +4,4 @@ __pycache__
 *.pyc
 .gen_placeholders.py
 .gen_seed_sql.py
+package-lock.json

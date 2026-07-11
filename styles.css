@@ -134,6 +134,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .kimg-main{position:absolute;top:0;right:0;width:78%;height:78%;background:url('https://images.unsplash.com/photo-1584990347449-a2d4c2b7a9b7?w=900&q=85&auto=format&fit=crop') center/cover}
 .kimg-acc{position:absolute;bottom:0;left:0;width:44%;height:43%;background:url('https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=600&q=85&auto=format&fit=crop') center/cover;border:5px solid var(--black)}
 .k-badge{position:absolute;top:-16px;left:26%;background:var(--orange);color:var(--white);font-family:var(--caps);font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:7px 16px;z-index:2}
+.kitchen-vis.kitchen-vis--video{height:auto}
+.kitchen-video{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.kitchen-video iframe,.kitchen-video video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;object-fit:cover;background:#000}
 
 /* ═══════ STATS ═══════ */
 .stats{background:var(--cream);padding:72px 0;border-top:1px solid var(--cloud);border-bottom:1px solid var(--cloud)}

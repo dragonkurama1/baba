@@ -670,7 +670,6 @@ async function saveProduct() {
         const { data, error } = await sb.from('product_colors').insert(row).select('id').single();
         if (error) throw error;
         colorIdMap[c.id] = data.id;
-        c.id = data.id;
       } else {
         const { error } = await sb.from('product_colors').update(row).eq('id', c.id);
         if (error) throw error;
@@ -690,13 +689,11 @@ async function saveProduct() {
       const realColorId = img.color_id ? (colorIdMap[img.color_id] || img.color_id) : null;
       if (img._file) {
         const url = await uploadFileToStorage(img._file, `products/${payload.slug}`);
-        const { data, error } = await sb.from('product_images').insert({
+        const { error } = await sb.from('product_images').insert({
           product_id: productId, color_id: realColorId, url,
           is_primary: !!img.is_primary, sort_order: img.sort_order || 0
-        }).select('id').single();
+        });
         if (error) throw error;
-        img.id = data.id;
-        img._file = null;
       } else if (img.id && !String(img.id).startsWith('tmp_')) {
         const { error } = await sb.from('product_images').update({
           is_primary: !!img.is_primary, sort_order: img.sort_order || 0, color_id: realColorId
@@ -716,9 +713,8 @@ async function saveProduct() {
       const isTmp = String(v.id).startsWith('tmp_');
       const row = { product_id: productId, name: v.name || '', sku: v.sku || null, price_override: v.price_override, stock: v.stock, sort_order: v.sort_order || 0 };
       if (isTmp) {
-        const { data, error } = await sb.from('product_variants').insert(row).select('id').single();
+        const { error } = await sb.from('product_variants').insert(row);
         if (error) throw error;
-        v.id = data.id;
       } else {
         const { error } = await sb.from('product_variants').update(row).eq('id', v.id);
         if (error) throw error;

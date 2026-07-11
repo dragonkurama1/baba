@@ -137,6 +137,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .kitchen-vis.kitchen-vis--video{height:auto}
 .kitchen-video{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.45)}
 .kitchen-video iframe,.kitchen-video video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;object-fit:cover;background:#000}
+.kitchen-video video{pointer-events:none;user-select:none}
+.kitchen-video video::-webkit-media-controls{display:none !important}
 
 /* ═══════ STATS ═══════ */
 .stats{background:var(--cream);padding:72px 0;border-top:1px solid var(--cloud);border-bottom:1px solid var(--cloud)}

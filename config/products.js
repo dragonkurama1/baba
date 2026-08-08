@@ -123,7 +123,7 @@ window.JAYPEE_PRODUCTS = [
   {
     id: 2, name: "Gourmet", cat: "Récipient Isotherme", cap: "3000 ML",
     badge: null, filter: "3000",
-    desc: "Le Gourmet 3000 est fait pour les grandes tablées et les repas généreux à la marocaine. Avec ses 3 litres, il conserve la chaleur de vos tajines, couscous et soupes familiales pendant de longues heures.",
+    desc: "Le gourmet  est fait pour les grandes tablées et les repas généreux à la marocaine. Avec ses 3 litres, il conserve la chaleur de vos tajines, couscous et soupes familiales pendant de longues heures.",
     icon: "🥘", photos: [],
     colors: [
       {

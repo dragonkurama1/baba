@@ -60,7 +60,7 @@ const DEFAULT_PRODUCTS = [
   {
     id:2, name:"Gourmet", cat:"Récipient Isotherme", cap:"3000 ML",
     badge:null, filter:"3000",
-    desc:"Le Gourmet 3000 est fait pour les grandes tablées et les repas généreux à la marocaine. Avec ses 3 litres de capacité en acier inoxydable premium, il conserve la chaleur de vos tajines, couscous et soupes familiales pendant de longues heures. Son format généreux et ses coloris naturels s'inscrivent parfaitement dans les cuisines contemporaines.",
+    desc:"Le gourmet  est fait pour les grandes tablées et les repas généreux à la marocaine. Avec ses 3 litres de capacité en acier inoxydable premium, il conserve la chaleur de vos tajines, couscous et soupes familiales pendant de longues heures. Son format généreux et ses coloris naturels s'inscrivent parfaitement dans les cuisines contemporaines.",
     icon:"🥘", photos:[],
     colors:[
       {name:"Beige",       hex:"#d4c8b0", images:["images/gourmet-beige-mogckxjc-0.jpg","images/gourmet-beige-mogckzis-1.jpg","images/gourmet-beige-mogcl265-2.jpg"], photo:"images/gourmet-beige-mogckxjc-0.jpg"},

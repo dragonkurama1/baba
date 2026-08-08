@@ -58,6 +58,7 @@
       <button class="adm-tab" data-tab="catalogs">Catalogues</button>
       <button class="adm-tab" data-tab="reviews">Reviews</button>
       <button class="adm-tab" data-tab="images">Images</button>
+      <button class="adm-tab" data-tab="messages">Messages <span id="admMsgBadge"></span></button>
     </div>
 
     <!-- PRODUITS -->
@@ -116,6 +117,26 @@
       <div style="padding:26px 34px">
         <div class="admin-side-h" style="padding:0 0 16px"><span>Toutes les images du catalogue</span></div>
         <div class="adm-gallery" id="admGallery"><div class="adm-loading"><span class="adm-spin dark"></span> Chargement…</div></div>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="adm-tabpanel" id="tabMessages" style="display:none">
+      <div class="adm-shell">
+        <div class="adm-side">
+          <div class="admin-side-h"><span>Messages de contact</span></div>
+          <div class="adm-toolbar">
+            <select class="af-sel" id="admMessageFilter">
+              <option value="">Tous</option>
+              <option value="unread">Non lus</option>
+              <option value="read">Lus</option>
+            </select>
+          </div>
+          <div class="admin-list" id="admMessageList"><div class="adm-loading"><span class="adm-spin dark"></span> Chargement…</div></div>
+        </div>
+        <div class="admin-form" id="admMessageFormWrap">
+          <div class="admin-empty"><div class="admin-empty-ico">✉️</div><div>Sélectionnez un message.</div></div>
+        </div>
       </div>
     </div>
   </div>

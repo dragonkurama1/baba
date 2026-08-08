@@ -100,9 +100,10 @@ async function onAuthed(session) {
   document.getElementById('admLogin').style.display = 'none';
   document.getElementById('admDash').style.display = 'block';
   document.getElementById('admUserEmail').textContent = session.user.email;
-  await Promise.all([loadCatalogs(), loadProducts()]);
+  await Promise.all([loadCatalogs(), loadProducts(), loadMessages()]);
   renderProductList();
   renderCatalogList();
+  updateMsgBadge();
   switchTab('products');
 }
 
@@ -139,6 +140,7 @@ function switchTab(tab) {
   document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).style.display = 'block';
   if (tab === 'reviews' && !REVIEWS.length) loadReviews().then(renderReviewList);
   if (tab === 'images') loadGallery();
+  if (tab === 'messages') loadMessages().then(() => { renderMessageList(); updateMsgBadge(); });
 }
 document.querySelectorAll('.adm-tab').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
 
@@ -941,6 +943,130 @@ async function galDelete(imageId) {
   toast('Image supprimée', 'success');
   loadGallery();
   loadProducts();
+}
+
+/* ═══════════════════════════════════════════════════════
+   MESSAGES DE CONTACT
+═══════════════════════════════════════════════════════ */
+let MESSAGES = [];
+let draftMessage = null;
+
+async function loadMessages() {
+  const { data, error } = await sb.from('contact_messages').select('*').order('created_at', { ascending: false });
+  if (error) { toast('Erreur chargement messages: ' + error.message, 'error'); return; }
+  MESSAGES = data || [];
+}
+
+function updateMsgBadge() {
+  const badge = document.getElementById('admMsgBadge');
+  if (!badge) return;
+  const n = MESSAGES.filter(m => !m.is_read).length;
+  badge.textContent = n ? n : '';
+  badge.className = n ? 'adm-tab-badge' : '';
+}
+
+function renderMessageList() {
+  const wrap = document.getElementById('admMessageList');
+  const filter = document.getElementById('admMessageFilter').value;
+  let list = MESSAGES;
+  if (filter === 'unread') list = list.filter(m => !m.is_read);
+  if (filter === 'read') list = list.filter(m => m.is_read);
+  if (!list.length) { wrap.innerHTML = '<div class="admin-empty" style="height:auto;padding:30px 10px"><div class="admin-empty-ico">✉️</div><div>Aucun message.</div></div>'; return; }
+  wrap.innerHTML = list.map(m => `
+    <div class="admin-litem ${draftMessage && draftMessage.id === m.id ? 'active' : ''}" onclick="openMessage('${m.id}')">
+      <div class="admin-litem-thumb">✉️</div>
+      <div class="admin-litem-info">
+        <div class="admin-litem-name">${esc(m.first_name)} ${esc(m.last_name)}</div>
+        <div class="admin-litem-cap">${esc(m.subject || 'Sans sujet')} · ${new Date(m.created_at).toLocaleDateString('fr-FR')}</div>
+      </div>
+      <div class="admin-litem-r">${!m.is_read ? '<span class="adm-pill feat">Nouveau</span>' : ''}</div>
+    </div>
+  `).join('');
+}
+document.getElementById('admMessageFilter').addEventListener('change', renderMessageList);
+
+async function openMessage(id) {
+  const m = MESSAGES.find(x => x.id === id);
+  draftMessage = m;
+  renderMessageDetail();
+  renderMessageList();
+  if (!m.is_read) {
+    const { error } = await sb.from('contact_messages').update({ is_read: true }).eq('id', id);
+    if (!error) { m.is_read = true; renderMessageList(); updateMsgBadge(); renderMessageDetail(); }
+  }
+}
+
+function closeMessageDetail() {
+  draftMessage = null;
+  document.getElementById('admMessageFormWrap').innerHTML = `<div class="admin-empty"><div class="admin-empty-ico">✉️</div><div>Sélectionnez un message.</div></div>`;
+  renderMessageList();
+}
+
+function renderMessageDetail() {
+  const m = draftMessage;
+  const wrap = document.getElementById('admMessageFormWrap');
+  wrap.innerHTML = `
+    <div class="af-section">
+      <div class="af-section-h">${esc(m.first_name)} ${esc(m.last_name)}</div>
+      <div class="af-row">
+        <div class="af-fld">
+          <label class="af-lbl">Email</label>
+          <div style="padding:10px 0"><a href="mailto:${esc(m.email)}" style="color:var(--red)">${esc(m.email)}</a></div>
+        </div>
+        <div class="af-fld">
+          <label class="af-lbl">Téléphone</label>
+          <div style="padding:10px 0">${m.phone ? `<a href="tel:${esc(m.phone)}" style="color:var(--red)">${esc(m.phone)}</a>` : '—'}</div>
+        </div>
+      </div>
+      <div class="af-row">
+        <div class="af-fld">
+          <label class="af-lbl">Sujet</label>
+          <div style="padding:10px 0">${esc(m.subject || '—')}</div>
+        </div>
+        <div class="af-fld">
+          <label class="af-lbl">Reçu le</label>
+          <div style="padding:10px 0">${new Date(m.created_at).toLocaleString('fr-FR')}</div>
+        </div>
+      </div>
+      <div class="af-row full">
+        <div class="af-fld">
+          <label class="af-lbl">Message</label>
+          <div style="padding:10px 0;white-space:pre-wrap;line-height:1.6">${esc(m.message)}</div>
+        </div>
+      </div>
+      <div class="af-actions">
+        <div class="af-actions-l">
+          <button class="admin-btn admin-btn-dng" onclick="deleteMessage('${m.id}')">Supprimer</button>
+        </div>
+        <div class="af-actions-r">
+          <button class="admin-btn admin-btn-sec" onclick="toggleMessageRead('${m.id}')">${m.is_read ? 'Marquer non lu' : 'Marquer lu'}</button>
+          <a class="admin-btn admin-btn-pri" href="mailto:${esc(m.email)}">Répondre par email</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+async function toggleMessageRead(id) {
+  const m = MESSAGES.find(x => x.id === id);
+  const { error } = await sb.from('contact_messages').update({ is_read: !m.is_read }).eq('id', id);
+  if (error) { toast('Erreur : ' + error.message, 'error'); return; }
+  m.is_read = !m.is_read;
+  draftMessage = m;
+  renderMessageDetail();
+  renderMessageList();
+  updateMsgBadge();
+}
+
+async function deleteMessage(id) {
+  const ok = await confirmDialog('Supprimer ce message ?', 'Cette action est irréversible.');
+  if (!ok) return;
+  const { error } = await sb.from('contact_messages').delete().eq('id', id);
+  if (error) { toast('Erreur : ' + error.message, 'error'); return; }
+  toast('Message supprimé', 'success');
+  await loadMessages();
+  updateMsgBadge();
+  closeMessageDetail();
 }
 
 /* ═══════════════════════ INIT ═══════════════════════ */

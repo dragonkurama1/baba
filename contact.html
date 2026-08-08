@@ -96,24 +96,24 @@
         <div class="form-row">
           <div class="fg">
             <label class="fl">Prénom</label>
-            <input type="text" class="fi" placeholder="Votre prénom" required/>
+            <input type="text" class="fi" id="ctFirstName" placeholder="Votre prénom" required/>
           </div>
           <div class="fg">
             <label class="fl">Nom</label>
-            <input type="text" class="fi" placeholder="Votre nom" required/>
+            <input type="text" class="fi" id="ctLastName" placeholder="Votre nom" required/>
           </div>
         </div>
         <div class="fg">
           <label class="fl">Email</label>
-          <input type="email" class="fi" placeholder="votre@email.com" required/>
+          <input type="email" class="fi" id="ctEmail" placeholder="votre@email.com" required/>
         </div>
         <div class="fg">
           <label class="fl">Téléphone</label>
-          <input type="tel" class="fi" placeholder="+212 6 00 00 00 00"/>
+          <input type="tel" class="fi" id="ctPhone" placeholder="+212 6 00 00 00 00"/>
         </div>
         <div class="fg">
           <label class="fl">Sujet</label>
-          <select class="fi">
+          <select class="fi" id="ctSubject">
             <option value="">Choisir un sujet</option>
             <option>Renseignement produit</option>
             <option>Commande &amp; livraison</option>
@@ -123,7 +123,7 @@
         </div>
         <div class="fg">
           <label class="fl">Message</label>
-          <textarea class="fta" placeholder="Votre message..." required></textarea>
+          <textarea class="fta" id="ctMessage" placeholder="Votre message..." required></textarea>
         </div>
         <button type="submit" class="fsub">
           Envoyer le message
@@ -182,6 +182,8 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config/supabase-config.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

@@ -623,6 +623,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .adm-tabs{display:flex;gap:6px;padding:14px 28px;background:var(--cream);border-bottom:1px solid var(--cloud);flex-wrap:wrap}
 .adm-tab{font-family:var(--caps);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:10px 18px;background:transparent;border:1.5px solid var(--cloud);color:var(--dark);cursor:pointer;transition:all var(--tr)}
 .adm-tab.active,.adm-tab:hover{border-color:var(--black);background:var(--black);color:var(--white)}
+.adm-tab-badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin-left:4px;background:var(--orange-s);color:var(--white);border-radius:8px;font-size:9px}
 
 /* Corps master/détail */
 .adm-shell{display:grid;grid-template-columns:320px 1fr;align-items:start}

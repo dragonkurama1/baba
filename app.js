@@ -795,13 +795,42 @@ setTimeout(checkReveals, 80);
 setTimeout(checkReveals, 400);
 
 /* ─── FORM SUBMIT ─── */
-function submitForm(e){
+async function submitForm(e){
   e.preventDefault();
-  const btn = e.target.querySelector('.fsub');
+  const form = e.target;
+  const btn = form.querySelector('.fsub');
   if(!btn) return;
-  btn.innerHTML = 'Message envoyé ✓';
-  btn.style.background='#2d7a4f';
-  setTimeout(()=>{ btn.innerHTML='Envoyer le message <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>'; btn.style.background=''; e.target.reset(); }, 3200);
+  const originalHTML = btn.innerHTML;
+
+  const payload = {
+    first_name: form.querySelector('#ctFirstName').value.trim(),
+    last_name: form.querySelector('#ctLastName').value.trim(),
+    email: form.querySelector('#ctEmail').value.trim(),
+    phone: form.querySelector('#ctPhone').value.trim() || null,
+    subject: form.querySelector('#ctSubject').value || null,
+    message: form.querySelector('#ctMessage').value.trim()
+  };
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="adm-spin"></span> Envoi…';
+
+  let ok = false;
+  if(window.sb){
+    const { error } = await window.sb.from('contact_messages').insert(payload);
+    ok = !error;
+    if(error) console.error('submitForm:', error);
+  }
+
+  btn.disabled = false;
+  if(ok){
+    btn.innerHTML = 'Message envoyé ✓';
+    btn.style.background='#2d7a4f';
+    setTimeout(()=>{ btn.innerHTML=originalHTML; btn.style.background=''; form.reset(); }, 3200);
+  } else {
+    btn.innerHTML = "Erreur, réessayez";
+    btn.style.background='#c0392b';
+    setTimeout(()=>{ btn.innerHTML=originalHTML; btn.style.background=''; }, 3200);
+  }
 }
 
 /* ─── ESC KEY ─── */

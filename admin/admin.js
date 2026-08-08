@@ -132,6 +132,54 @@ document.getElementById('admLogoutBtn').addEventListener('click', async () => {
   showLogin();
 });
 
+/* ═══════════════════════ MOT DE PASSE OUBLIÉ ═══════════════════════ */
+const admForgotToggle = document.getElementById('admForgotToggle');
+const admForgotWrap = document.getElementById('admForgotWrap');
+const admLoginFormEl = document.getElementById('admLoginForm');
+
+admForgotToggle.addEventListener('click', (e) => {
+  e.preventDefault();
+  const showingForgot = admForgotWrap.style.display !== 'none';
+  admForgotWrap.style.display = showingForgot ? 'none' : 'block';
+  admLoginFormEl.style.display = showingForgot ? 'block' : 'none';
+  admForgotToggle.textContent = showingForgot ? 'Mot de passe oublié ?' : '← Retour à la connexion';
+  document.getElementById('admLoginErr').classList.remove('show');
+  document.getElementById('admLoginOk').classList.remove('show');
+});
+
+document.getElementById('admForgotForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('admForgotEmail').value.trim();
+  const btn = document.getElementById('admForgotBtn');
+  const errEl = document.getElementById('admLoginErr');
+  const okEl = document.getElementById('admLoginOk');
+  errEl.classList.remove('show');
+  okEl.classList.remove('show');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="adm-spin"></span> Envoi…';
+
+  const { error } = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + '/reset-password.html'
+  });
+
+  btn.disabled = false;
+  btn.textContent = 'Envoyer le lien';
+
+  if (error) {
+    if (/rate limit/i.test(error.message || '')) {
+      errEl.textContent = "Trop d'emails envoyés récemment (limite Supabase). Réessayez dans quelques minutes.";
+    } else {
+      errEl.textContent = error.message;
+    }
+    errEl.classList.add('show');
+    return;
+  }
+
+  okEl.textContent = 'Si ce compte existe, un email de réinitialisation vient d\'être envoyé.';
+  okEl.classList.add('show');
+  document.getElementById('admForgotEmail').value = '';
+});
+
 /* ═══════════════════════ TABS ═══════════════════════ */
 function switchTab(tab) {
   currentTab = tab;

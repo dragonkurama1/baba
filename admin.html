@@ -23,6 +23,7 @@
       <div class="adm-login-ttl">Espace Admin</div>
       <div class="adm-login-sub">Gestion du catalogue JAYPEE</div>
       <div class="adm-login-err" id="admLoginErr"></div>
+      <div class="adm-login-err" id="admLoginOk" style="background:#e8f5e9;color:#2e7d32;border-left-color:#2e7d32"></div>
       <form id="admLoginForm">
         <div class="af-fld" style="margin-bottom:14px">
           <label class="af-lbl">Email</label>
@@ -34,6 +35,21 @@
         </div>
         <button class="adm-login-btn" type="submit" id="admLoginBtn">Se connecter</button>
       </form>
+
+      <div id="admForgotWrap" style="display:none">
+        <div class="adm-login-sub" style="margin:0 0 16px;text-transform:none;letter-spacing:normal;font-size:12px;text-align:left">Entrez votre email, un lien de réinitialisation vous sera envoyé.</div>
+        <form id="admForgotForm">
+          <div class="af-fld" style="margin-bottom:14px">
+            <label class="af-lbl">Email</label>
+            <input class="af-inp" type="email" id="admForgotEmail" required autocomplete="username"/>
+          </div>
+          <button class="adm-login-btn" type="submit" id="admForgotBtn">Envoyer le lien</button>
+        </form>
+      </div>
+
+      <div style="text-align:center;margin-top:18px">
+        <a href="#" id="admForgotToggle" style="font-family:var(--caps);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)">Mot de passe oublié ?</a>
+      </div>
     </div>
   </div>
 

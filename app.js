@@ -486,7 +486,10 @@ function renderGrid(filter){
         <div class="pcard-desc">${esc((p.desc||'').substring(0,90))}…</div>
         <div class="pcard-meta">
           <div class="pcols">
-            ${(p.colors||[]).map(c=>`<div class="pcol-dot" style="background:${esc(c.hex)}" title="${esc(c.name)}"></div>`).join('')}
+            ${(p.colors||[]).map(c=>{
+              const cImg = (c.images&&c.images[0])||c.photo||mainPhoto;
+              return `<div class="pcol-dot" style="background:${esc(c.hex)}" title="${esc(c.name)}" onclick="event.stopPropagation();swapCardImage(this,'${esc(cImg)}')"></div>`;
+            }).join('')}
           </div>
           <button class="pcard-act" onclick="event.stopPropagation();openPDP(${p.id})">Découvrir</button>
         </div>
@@ -524,7 +527,10 @@ function renderFeatured(){
         <div class="pcard-name">${esc(p.name)}</div>
         <div class="pcard-meta">
           <div class="pcols">
-            ${(p.colors||[]).map(c=>`<div class="pcol-dot" style="background:${esc(c.hex)}" title="${esc(c.name)}"></div>`).join('')}
+            ${(p.colors||[]).map(c=>{
+              const cImg = (c.images&&c.images[0])||c.photo||mainPhoto;
+              return `<div class="pcol-dot" style="background:${esc(c.hex)}" title="${esc(c.name)}" onclick="event.stopPropagation();swapCardImage(this,'${esc(cImg)}')"></div>`;
+            }).join('')}
           </div>
           <button class="pcard-act" onclick="event.stopPropagation();openPDP(${p.id})">Découvrir</button>
         </div>
@@ -532,6 +538,15 @@ function renderFeatured(){
     </div>
   `;}).join('');
   checkReveals();
+}
+
+/* ─── SWAP IMAGE DE LA CARTE AU CLIC SUR UNE COULEUR ─── */
+function swapCardImage(dotEl, src){
+  if(!src) return;
+  const card = dotEl.closest('.pcard');
+  if(!card) return;
+  const img = card.querySelector('.pcard-img');
+  if(img) img.src = src;
 }
 
 function filterProd(f, btn){

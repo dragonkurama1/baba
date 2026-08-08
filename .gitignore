@@ -5,3 +5,4 @@ __pycache__
 .gen_placeholders.py
 .gen_seed_sql.py
 package-lock.json
+.claude/

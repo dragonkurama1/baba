@@ -14,6 +14,7 @@ let currentTab = 'products';
 let draftProduct = null;   // { ...row, colors:[], images:[], variants:[] }
 let draftCatalog = null;
 let draftReview = null;
+let CURRENT_ROLE = 'admin';
 let tmpCounter = 0;
 const tmpId = () => 'tmp_' + (++tmpCounter);
 
@@ -100,6 +101,16 @@ async function onAuthed(session) {
   document.getElementById('admLogin').style.display = 'none';
   document.getElementById('admDash').style.display = 'block';
   document.getElementById('admUserEmail').textContent = session.user.email;
+
+  CURRENT_ROLE = 'admin';
+  try {
+    const { data: roleRow } = await sb.from('admin_users').select('role').eq('user_id', session.user.id).single();
+    if (roleRow && roleRow.role) CURRENT_ROLE = roleRow.role;
+  } catch (e) { /* colonne role pas encore créée : reste admin par défaut */ }
+  document.getElementById('admApp').classList.toggle('adm-viewer-mode', CURRENT_ROLE === 'viewer');
+  const roleBadge = document.getElementById('admRoleBadge');
+  if (roleBadge) roleBadge.style.display = CURRENT_ROLE === 'viewer' ? 'inline-flex' : 'none';
+
   await Promise.all([loadCatalogs(), loadProducts(), loadMessages()]);
   renderProductList();
   renderCatalogList();
@@ -1038,7 +1049,7 @@ async function openMessage(id) {
   draftMessage = m;
   renderMessageDetail();
   renderMessageList();
-  if (!m.is_read) {
+  if (!m.is_read && CURRENT_ROLE !== 'viewer') {
     const { error } = await sb.from('contact_messages').update({ is_read: true }).eq('id', id);
     if (!error) { m.is_read = true; renderMessageList(); updateMsgBadge(); renderMessageDetail(); }
   }
@@ -1087,7 +1098,7 @@ function renderMessageDetail() {
           <button class="admin-btn admin-btn-dng" onclick="deleteMessage('${m.id}')">Supprimer</button>
         </div>
         <div class="af-actions-r">
-          <button class="admin-btn admin-btn-sec" onclick="toggleMessageRead('${m.id}')">${m.is_read ? 'Marquer non lu' : 'Marquer lu'}</button>
+          <button class="admin-btn admin-btn-sec" id="admMsgToggleBtn" onclick="toggleMessageRead('${m.id}')">${m.is_read ? 'Marquer non lu' : 'Marquer lu'}</button>
           <a class="admin-btn admin-btn-pri" href="mailto:${esc(m.email)}">Répondre par email</a>
         </div>
       </div>

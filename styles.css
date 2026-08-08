@@ -625,6 +625,26 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .adm-tab.active,.adm-tab:hover{border-color:var(--black);background:var(--black);color:var(--white)}
 .adm-tab-badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;margin-left:4px;background:var(--orange-s);color:var(--white);border-radius:8px;font-size:9px}
 
+/* ═══════ MODE LECTURE SEULE (viewer) ═══════ */
+.adm-viewer-mode .admin-add,
+.adm-viewer-mode #admNewProductBtn,
+.adm-viewer-mode #admNewCatalogBtn,
+.adm-viewer-mode #admNewReviewBtn,
+.adm-viewer-mode .admin-btn-pri,
+.adm-viewer-mode .admin-btn-dng,
+.adm-viewer-mode .af-add,
+.adm-viewer-mode .af-rm,
+.adm-viewer-mode .af-photo-rm,
+.adm-viewer-mode .adm-btn-xs,
+.adm-viewer-mode #admMsgToggleBtn{display:none!important}
+.adm-viewer-mode .admin-form input,
+.adm-viewer-mode .admin-form textarea,
+.adm-viewer-mode .admin-form select,
+.adm-viewer-mode .admin-form input[type="file"],
+.adm-viewer-mode .admin-form .af-photo,
+.adm-viewer-mode .adm-gal-actions,
+.adm-viewer-mode .adm-switch input{pointer-events:none;opacity:.6}
+
 /* Corps master/détail */
 .adm-shell{display:grid;grid-template-columns:320px 1fr;align-items:start}
 .adm-side{position:sticky;top:0;max-height:calc(100vh - 130px);background:var(--cream);border-right:1px solid var(--cloud);overflow-y:auto;padding:18px 14px}

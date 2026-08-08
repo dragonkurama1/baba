@@ -321,11 +321,7 @@ const DEFAULT_PRODUCTS = [
 ];
 
 /* ─── STORAGE ─── */
-const STORAGE_KEY = 'jaypee_products_v3';
 const FOLDER_HANDLE_KEY = 'jaypee_folder_handle_v1';
-// Clean up old version keys
-try{ localStorage.removeItem('jaypee_products_v1'); }catch(e){}
-try{ localStorage.removeItem('jaypee_products_v2'); }catch(e){}
 let projectFolderHandle = null;
 
 function migrateProducts(arr){
@@ -348,46 +344,12 @@ function migrateProducts(arr){
 }
 
 function loadProducts(){
-  const cfgVersion = (window.JAYPEE_CONFIG && window.JAYPEE_CONFIG.version) || null;
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if(raw){
-      const data = JSON.parse(raw);
-      if(Array.isArray(data) && data.length){
-        // Si une version est définie dans config, vérifier qu'elle correspond
-        if(cfgVersion){
-          const storedVersion = localStorage.getItem(STORAGE_KEY + '_cfgver');
-          if(storedVersion !== cfgVersion){
-            // Version différente → on recharge depuis le fichier config
-            localStorage.removeItem(STORAGE_KEY);
-            localStorage.removeItem(STORAGE_KEY + '_cfgver');
-          } else {
-            return migrateProducts(data);
-          }
-        } else {
-          return migrateProducts(data);
-        }
-      }
-    }
-  }catch(e){ console.warn('loadProducts:', e); }
-  // Utilise config/products.js si disponible, sinon les produits par défaut
+  // Fallback hors-ligne uniquement (aucun cache navigateur) : Supabase est
+  // la source de vérité, récupérée par fetchProductsFromSupabase() ci-dessous.
   const base = (window.JAYPEE_PRODUCTS && window.JAYPEE_PRODUCTS.length)
     ? window.JAYPEE_PRODUCTS
     : DEFAULT_PRODUCTS;
   return migrateProducts(JSON.parse(JSON.stringify(base)));
-}
-
-function saveProducts(){
-  try{
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(PRODUCTS));
-    const cfgVersion = (window.JAYPEE_CONFIG && window.JAYPEE_CONFIG.version) || null;
-    if(cfgVersion) localStorage.setItem(STORAGE_KEY + '_cfgver', cfgVersion);
-    return true;
-  }catch(e){
-    afToast('Erreur — quota localStorage atteint. Réduisez la taille des images.', 'error');
-    console.error(e);
-    return false;
-  }
 }
 
 let PRODUCTS = loadProducts();
@@ -852,8 +814,18 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   const hasGrid = !!document.getElementById('prodGrid');
   const hasPDP = !!document.getElementById('pdpOverlay');
   const hasFeat = !!document.getElementById('featGrid');
+  const needsProducts = hasGrid || hasPDP || hasFeat;
 
-  // 1) Rendu immédiat avec les données disponibles localement (aucune page blanche)
+  // Si Supabase est configuré, on attend le catalogue live AVANT le premier
+  // rendu — évite le flash de données obsolètes (fallback local) remplacées
+  // aussitôt par les vraies données. En cas d'échec, PRODUCTS garde le
+  // fallback local déjà chargé (aucune page blanche).
+  if(needsProducts && window.sb){
+    const grid = document.getElementById('prodGrid');
+    if(grid) grid.innerHTML = '<div class="prod-loading">Chargement de la collection…</div>';
+    await fetchProductsFromSupabase();
+  }
+
   if(hasGrid){
     renderGrid('all');
   }
@@ -867,20 +839,6 @@ document.addEventListener('DOMContentLoaded', async ()=>{
     const id = parseInt(idParam, 10);
     if(!isNaN(id) && PRODUCTS.find(p=>p.id===id)){
       setTimeout(()=>openPDP(id), 300);
-    }
-  }
-
-  // 2) Si Supabase est configuré sur cette page, on récupère le catalogue live
-  //    et on rafraîchit silencieusement l'affichage dès qu'il est prêt.
-  if((hasGrid || hasPDP || hasFeat) && window.sb){
-    const ok = await fetchProductsFromSupabase();
-    if(ok){
-      if(hasGrid) renderGrid(currentFilter);
-      if(hasFeat) renderFeatured();
-      if(hasPDP && currentPDP != null && PRODUCTS.find(p=>p.id===currentPDP)){
-        const panelOpen = document.getElementById('pdpPanel')?.classList.contains('open');
-        if(panelOpen) renderPDP(currentPDP);
-      }
     }
   }
 });

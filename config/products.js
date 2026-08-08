@@ -58,15 +58,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Camel", hex: "#c4956a", images: [], photo: null }
     ],
     specs: {
-      "Capacité": "2000 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 12h", "Conservation froid": "Jusqu'à 24h",
-      "Fermeture": "Hermétique sous vide", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Hermétique sous vide"
     },
     features: [
-      { ico: "🌡️", title: "Double paroi sous vide",  txt: "Maintien optimal de la température jusqu'à 24 heures." },
-      { ico: "✨",  title: "Finition premium mate",   txt: "Surface anti-traces pour un aspect toujours impeccable." },
-      { ico: "🔒", title: "Fermeture hermétique",     txt: "Couvercle à joint silicone, zéro fuite." },
-      { ico: "🧼", title: "Facilement nettoyable",    txt: "Inox alimentaire approuvé, lavage facile à la main." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -103,15 +105,17 @@ window.JAYPEE_PRODUCTS = [
       }
     ],
     specs: {
-      "Capacité": "1500 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 10h", "Conservation froid": "Jusqu'à 20h",
-      "Fermeture": "Hermétique", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Hermétique"
     },
     features: [
-      { ico: "🌡️", title: "Isolation thermique avancée", txt: "Double paroi vacuum pour garder vos plats à température idéale." },
-      { ico: "🎨", title: "Coloris intemporels",          txt: "3 teintes soigneusement sélectionnées pour votre intérieur." },
-      { ico: "⚖️", title: "Format compact & léger",       txt: "Ergonomique et pratique, parfait pour 2-3 personnes." },
-      { ico: "🏆", title: "Qualité certifiée",             txt: "Acier inoxydable alimentaire, sans BPA." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -140,15 +144,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Vert de gris", hex: "#7d9e8f", images: [], photo: null }
     ],
     specs: {
-      "Capacité": "3000 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 14h", "Conservation froid": "Jusqu'à 28h",
-      "Fermeture": "Couvercle verrouillant", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Couvercle verrouillant"
     },
     features: [
-      { ico: "👨‍👩‍👧‍👦", title: "Format grandes tablées",      txt: "3 litres idéaux pour 4 à 6 personnes." },
-      { ico: "🌡️",     title: "Conservation longue durée", txt: "Maintien de la chaleur jusqu'à 14 heures." },
-      { ico: "🎨",     title: "Coloris naturels",           txt: "Beige, Taupe, Vert de gris." },
-      { ico: "🔒",     title: "Couvercle verrouillant",     txt: "Fermeture sécurisée pour le transport." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -188,15 +194,17 @@ window.JAYPEE_PRODUCTS = [
       }
     ],
     specs: {
-      "Capacité": "5000 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 16h", "Conservation froid": "Jusqu'à 32h",
-      "Fermeture": "Couvercle XXL verrouillant", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Couvercle XXL verrouillant"
     },
     features: [
-      { ico: "🎉", title: "Format événementiel",       txt: "5 litres pour 8 à 12 personnes." },
-      { ico: "🌡️", title: "Performance thermique XXL", txt: "Double paroi renforcée, chaleur jusqu'à 16 heures." },
-      { ico: "💪", title: "Robustesse & durabilité",   txt: "Acier inoxydable alimentaire haute résistance." },
-      { ico: "🏠", title: "Présence en cuisine",        txt: "Une pièce imposante et esthétique." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -225,15 +233,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Vert clair", hex: "#b8d4b0", images: ["images/gourmet-beige-0.jpg"], photo: null }
     ],
     specs: {
-      "Contenu": "3 récipients (800, 1200, 1500 ML)", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 10h", "Conservation froid": "Jusqu'à 20h",
-      "Fermeture": "Hermétique x3", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Hermétique x3"
     },
     features: [
-      { ico: "🍱", title: "Set de 3 tailles",   txt: "800, 1200 et 1500 ml pour entrée, plat et dessert." },
-      { ico: "🌡️", title: "Triple isolation",   txt: "Chaque récipient bénéficie de la double paroi sous vide." },
-      { ico: "🎁", title: "Idéal cadeau",        txt: "Le cadeau parfait pour une maison premium." },
-      { ico: "🔄", title: "Usage polyvalent",    txt: "Cuisine, pique-nique, bureau — partout." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -252,15 +262,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Taupe",       hex: "#8e7d6e", images: ["images/fabrenetaupe-0.jpg"], photo: null }
     ],
     specs: {
-      "Capacité": "3000 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 14h", "Conservation froid": "Jusqu'à 28h",
-      "Fermeture": "Hermétique", "Coloris": "2 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Hermétique"
     },
     features: [
-      { ico: "✨", title: "Silhouette signature",   txt: "Courbes douces pour une présence noble en cuisine." },
-      { ico: "🌡️", title: "Isolation de référence", txt: "Paroi sous vide pour une conservation exemplaire." },
-      { ico: "🎨", title: "2 coloris épurés",        txt: "Blanc Cassé et Taupe — l'élégance sobre." },
-      { ico: "🏆", title: "Gamme premium JAYPEE",    txt: "Standards les plus exigeants de la collection." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -276,15 +288,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Vert de gris", hex: "#7d9e8f", images: ["images/gourmet-beige-0.jpg"], photo: null }
     ],
     specs: {
-      "Capacité": "2000 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 12h", "Conservation froid": "Jusqu'à 24h",
-      "Fermeture": "Wavelock — verrouillage avancé", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Wavelock — verrouillage avancé"
     },
     features: [
-      { ico: "🌊", title: "Design Wavelock ondulé",   txt: "Prise en main ergonomique grâce au profil ondulé." },
-      { ico: "🔒", title: "Système Wavelock Ultra",   txt: "Étanchéité totale pour le transport." },
-      { ico: "🌡️", title: "Performance thermique",    txt: "12h chaud / 24h froid." },
-      { ico: "🎨", title: "3 coloris tendance",       txt: "Beige, Bleu et Vert de gris." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -300,15 +314,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Rouge", hex: "#c0392b", images: ["images/gourmet-beige-0.jpg"], photo: null }
     ],
     specs: {
-      "Capacité": "1500 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 10h", "Conservation froid": "Jusqu'à 20h",
-      "Fermeture": "Smart-Lock", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Smart-Lock"
     },
     features: [
-      { ico: "🏃", title: "Conçu pour le mouvement",  txt: "Format compact et léger." },
-      { ico: "🔒", title: "Smart-Lock intégré",        txt: "Fermeture rapide d'une main." },
-      { ico: "🎨", title: "Coloris contemporains",     txt: "Gris, Bleu, Rouge." },
-      { ico: "🧼", title: "Entretien simplifié",       txt: "Joint amovible, nettoyage en quelques secondes." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -324,15 +340,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Beige", hex: "#d4c8b0", images: ["images/gourmet-beige-0.jpg"], photo: null }
     ],
     specs: {
-      "Capacité": "2000 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 12h", "Conservation froid": "Jusqu'à 24h",
-      "Fermeture": "Smart-Lock Plus", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Smart-Lock Plus"
     },
     features: [
-      { ico: "📈", title: "Capacité augmentée",       txt: "2 litres pour des repas plus généreux." },
-      { ico: "🔒", title: "Smart-Lock Plus",           txt: "Fermeture améliorée, pratique et sécurisée." },
-      { ico: "🌡️", title: "Double isolation",          txt: "12h chaud, 24h froid." },
-      { ico: "🎨", title: "Coloris neutres & luxueux", txt: "Taupe, Blanc et Beige." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -349,15 +367,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Vert clair", hex: "#b8d4b0", images: ["images/gourmet-beige-0.jpg"], photo: null }
     ],
     specs: {
-      "Capacité": "2500 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 13h", "Conservation froid": "Jusqu'à 26h",
-      "Fermeture": "Princeton-Lock hermétique", "Coloris": "4 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Princeton-Lock hermétique"
     },
     features: [
-      { ico: "👑", title: "Silhouette Princeton",     txt: "Format vertical élancé, présence majestueuse." },
-      { ico: "🎨", title: "4 coloris exclusifs",      txt: "Écru, Grège, Camel et Vert clair." },
-      { ico: "🌡️", title: "Isolation longue durée",   txt: "13h chaud / 26h froid." },
-      { ico: "✨", title: "Finition haut de gamme",    txt: "Chaque détail travaillé pour un rendu irréprochable." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -373,15 +393,17 @@ window.JAYPEE_PRODUCTS = [
       { name: "Vert clair",  hex: "#b8d4b0", images: ["images/gourmet-beige-0.jpg"], photo: null }
     ],
     specs: {
-      "Capacité": "2500 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 13h", "Conservation froid": "Jusqu'à 26h",
-      "Fermeture": "Hermétique renforcée", "Coloris": "3 variantes", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Hermétique renforcée"
     },
     features: [
-      { ico: "🏛️", title: "Design classique intemporel", txt: "Lignes droites et proportions parfaites." },
-      { ico: "💎", title: "Luxe discret",                 txt: "La perfection dans la sobriété." },
-      { ico: "🌡️", title: "Conservation optimale",        txt: "13h chaud / 26h froid." },
-      { ico: "🔒", title: "Fermeture renforcée",          txt: "Joint silicone de qualité supérieure." }
+      { ico: "✨", title: "Sans BPA", txt: "Fabriqué à partir de matériaux 100 % alimentaires, sans BPA, garantissant sécurité et bien-être." },
+      { ico: "🔒", title: "Excellente rétention de chaleur", txt: "Conçu pour maintenir les aliments chauds et frais plus longtemps, adapté à un usage quotidien et festif." },
+      { ico: "✨", title: "Système de verrouillage sécurisé", txt: "Couvercle verrouillable pour éviter les fuites et assurer un transport sûr." },
+      { ico: "🌡️", title: "Design premium", txt: "Corps extérieur en PU noir avec finition texturée effet cuir, offrant un aspect moderne et élégant." },
+      { ico: "🧼", title: "Entretien simplifié", txt: "Joint amovible, nettoyage en quelques secondes." },
+      { ico: "✨", title: "Intérieur durable en inox", txt: "Fabriqué en acier inoxydable de haute qualité, garantissant robustesse et sécurité alimentaire." }
     ]
   },
 
@@ -398,9 +420,9 @@ window.JAYPEE_PRODUCTS = [
       { name: "Blanc/Dots",   hex: "#e8e4dc", images: ["images/gourmet-beige-0.jpg"], photo: null }
     ],
     specs: {
-      "Capacité": "650 ML", "Matière": "Acier inoxydable 18/8",
-      "Conservation chaud": "Jusqu'à 8h", "Conservation froid": "Jusqu'à 18h",
-      "Fermeture": "Bouchon twist sécurisé", "Coloris": "4 variantes bicolores", "Origine": "The Kitchen Collection"
+      "Matière": "Acier inoxydable 18/8",
+      "Conservation chaud / froid": "7h",
+      "Fermeture": "Bouchon twist sécurisé"
     },
     features: [
       { ico: "💧", title: "Bouteille de sport premium", txt: "650 ml pour une hydratation optimale." },
